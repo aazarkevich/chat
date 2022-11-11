@@ -5,8 +5,16 @@ import javax.persistence.*;
 @Entity
 @Table(name = "messages", schema = "public", catalog = "chat")
 public class Messages {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "id")
     private long id;
+    @Basic
+    @Column(name = "message")
     private String message;
+    @Basic
+    @Column(name = "users")
+    private long users;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -46,5 +54,13 @@ public class Messages {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (message != null ? message.hashCode() : 0);
         return result;
+    }
+
+    public long getUsers() {
+        return users;
+    }
+
+    public void setUsers(long users) {
+        this.users = users;
     }
 }

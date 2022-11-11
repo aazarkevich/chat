@@ -5,8 +5,15 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user", schema = "public", catalog = "chat")
 public class User {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "id")
     private long id;
+    @Basic
+    @Column(name = "login")
     private String login;
+    @Basic
+    @Column(name = "password")
     private String password;
 
     @Id
@@ -21,7 +28,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "login", nullable = false, length = -1)
+    @Column(name = "login", nullable = false)
     public String getLogin() {
         return login;
     }
@@ -31,7 +38,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "password", nullable = false, length = -1)
+    @Column(name = "password", nullable = false)
     public String getPassword() {
         return password;
     }

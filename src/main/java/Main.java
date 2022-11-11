@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Main {
-    //    private static final SessionFactory ourSessionFactory;
+//        private static final SessionFactory ourSessionFactory;
 //
 //    static {
 //        try {
@@ -50,7 +50,10 @@ public class Main {
 //    }
 //    public static void main(String[] args) {
 //        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//        String encodedPassword = passwordEncoder.encode("12345");
+//        String encodedPassword = passwordEncoder.encode("11111");//$2a$10$Fg2jllvNgwR/faX5q5zmp.OKjT98JhaovGGM1kQfyqYqKx.FFgIWu
+//        String encodedPassword2 = passwordEncoder.encode("22222");//$2a$10$Fg2jllvNgwR/faX5q5zmp.OKjT98JhaovGGM1kQfyqYqKx.FFgIWu
+//
 //        System.out.println(encodedPassword);
+//        System.out.println(encodedPassword2);
 //    }
 }

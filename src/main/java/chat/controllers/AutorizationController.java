@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AutorizationController {
     @Autowired
     private UserRepository userRepository;
+
     @GetMapping()
     public String login() {
-        User us101 = userRepository.findById(1l).get();
-        System.out.println("Testik " + us101);
         return "autorization/login.html";
     }
 
