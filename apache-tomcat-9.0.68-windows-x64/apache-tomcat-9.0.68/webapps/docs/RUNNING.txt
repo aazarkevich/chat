@@ -231,7 +231,7 @@ Advanced Configuration - Multiple Tomcat Instances
 ==================================================
 
 In many circumstances, it is desirable to have a single copy of a Tomcat
-binary distribution shared among multiple users on the same server.  To make
+binary distribution shared among multiple User on the same server.  To make
 this possible, you can set the CATALINA_BASE environment variable to the
 directory that contains the files for your 'personal' Tomcat instance.
 
