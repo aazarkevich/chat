@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Чат</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap5.min.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+    <div class="row row-cols-2">
+        <div th:replace="fragments/online-user :: online-user"></div>
+        <div th:replace="fragments/communication :: communication"></div>
+    </div>
+
+</div>
+<div class="row-cols-1 m-1">
+    <div class="w-auto">
+        <form action="">
+            <div class="text-end justify-content-end align-items-end">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
