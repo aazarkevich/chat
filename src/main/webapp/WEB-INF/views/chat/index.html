@@ -14,18 +14,19 @@
         <div th:replace="fragments/online-user :: online-user"></div>
         <div th:replace="fragments/communication :: communication"></div>
     </div>
+    <div class="row-cols-1 m-1">
+        <div class="w-auto">
+            <form action="">
+                <div class="w-100 d-flex flex-column text-end justify-content-end align-items-end">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
 </div>
-<div class="row-cols-1 m-1">
-    <div class="w-auto">
-        <form action="">
-            <div class="text-end justify-content-end align-items-end">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
-    </div>
-</div>
+
 
 </body>
 </html>

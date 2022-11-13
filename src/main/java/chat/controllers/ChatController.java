@@ -1,30 +1,24 @@
 package chat.controllers;
 
 import chat.service.AuthoritiesUser;
-import chat.service.UserDetailsServiceImp;
-import chat.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
 @Controller
 public class ChatController {
-    @Autowired
-    private UserService userService;
+    private final AuthoritiesUser authoritiesUser;
 
-    @Autowired
-    private AuthoritiesUser authoritiesUser;
+    public ChatController(AuthoritiesUser authoritiesUser) {
+        this.authoritiesUser = authoritiesUser;
+    }
 
     @GetMapping
-    public String index() {
+    public String index(Model model) {
         List<String> authoritiesUsername = authoritiesUser.getUsernames();
-        for (String name : authoritiesUsername) {
-            System.out.println("namer : " + name);
-        }
+        model.addAttribute("authoritiesUsername", authoritiesUsername);
         return "chat/index.html";
     }
 }

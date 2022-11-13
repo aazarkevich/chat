@@ -1,6 +1,9 @@
 package chat.config;
 
+import chat.service.CustomLogoutHandler;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,10 +23,12 @@ import org.springframework.security.web.session.HttpSessionEventPublisher;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
+@NoArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
     @Autowired
     private UserDetailsService userDetailsService;
+    @Autowired
+    private CustomLogoutHandler customLogoutHandler;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -52,13 +57,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .and()
                 .logout()
+                .addLogoutHandler(customLogoutHandler)
                 .logoutUrl("/logout")
+                .logoutSuccessUrl("/login")
                 .and()
                 .csrf()
                 .disable();
-//                .sessionManagement()
-//                .maximumSessions(3)
-//                .sessionRegistry(sessionRegistry());
     }
 
     @Override
