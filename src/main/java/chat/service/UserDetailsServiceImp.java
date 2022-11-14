@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Service("userDetailsService")
 public class UserDetailsServiceImp implements UserDetailsService {
@@ -30,7 +28,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
     @Transactional(readOnly = true)
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByUsername(username).orElse(null);
         UserBuilder builder = null;
         if(user != null) {
             builder = org.springframework.security.core.userdetails.User.withUsername(username);

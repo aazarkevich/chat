@@ -19,11 +19,10 @@ public class User {
     private String username;
     @Basic
     @Column(name = "password")
+
     private String password;
 
-    @Id
-    @Column(name = "id", nullable = false)
-    @GeneratedValue(generator = "user_seq")
+
     public long getId() {
         return id;
     }

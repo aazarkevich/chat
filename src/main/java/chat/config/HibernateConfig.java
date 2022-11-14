@@ -1,21 +1,17 @@
 package chat.config;
 
-import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AvailableSettings;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -57,10 +53,11 @@ public class HibernateConfig {
     }
 
     @Bean
-    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
-        HibernateTransactionManager txManager = new HibernateTransactionManager();
-        txManager.setSessionFactory(sessionFactory);
-        return txManager;
+    public JpaTransactionManager transactionManager(final EntityManagerFactory entityManagerFactory) {
+        JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
+        jpaTransactionManager.setEntityManagerFactory(entityManagerFactory);
+
+        return jpaTransactionManager;
     }
 
     @Bean
@@ -70,7 +67,6 @@ public class HibernateConfig {
         factory.setPackagesToScan("chat.models");
         factory.setDataSource(getDataSource());
         factory.afterPropertiesSet();
-
         return factory.getObject();
     }
 }

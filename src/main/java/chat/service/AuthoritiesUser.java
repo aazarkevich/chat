@@ -1,13 +1,9 @@
 package chat.service;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
-import javax.servlet.http.PushBuilder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Component
 public class AuthoritiesUser {

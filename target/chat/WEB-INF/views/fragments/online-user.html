@@ -1,7 +1,8 @@
 <div th:fragment="online-user" class="col-4 h-50">
     <div class="col align-self-start">
+        <span>Онлайн: </span>
         <ul th:each="username: ${authoritiesUsername}" class="list-group align-items-start w-100">
-            <li class="list-group-item" th:text="${username}"></li>
+            <li class="list-group-item" id="" th:text="${username}"></li>
         </ul>
     </div>
 </div>
