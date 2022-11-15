@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Чат</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap5.min.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <script src="/resources/js/sockjs.min.js"></script>
+    <script src="/resources/js/stomp.min.js"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+    <div class="row row-cols-2">
+        <div th:replace="fragments/online-user :: online-user"></div>
+        <div th:replace="fragments/communication :: communication"></div>
+    </div>
+    <div class="row-cols-1 m-1">
+        <div class="w-auto">
+            <form id="messageForm" name="messageForm">
+                <div class="w-100 d-flex flex-column text-end justify-content-end align-items-end">
+                    <textarea class="form-control" id="message" rows="3"></textarea>
+                    <button type="submit" class="btn btn-primary" onclick="saveMessage()">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+<script src="/resources/js/main.js"></script>
+<script src="/resources/js/jquery-3.6.0.min.js"></script>
+<script src="/resources/js/saveMessage.js"></script>
+</body>
+</html>
