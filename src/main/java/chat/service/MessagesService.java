@@ -15,18 +15,18 @@ public class MessagesService {
     private final MessagesRepository messagesRepository;
     private final UserRepository userRepository;
 
-    public MessagesService(MessagesRepository messagesRepository, UserRepository userRepository, SessionFactory sessionFactory) {
+    public MessagesService(MessagesRepository messagesRepository, UserRepository userRepository) {
         this.messagesRepository = messagesRepository;
         this.userRepository = userRepository;
     }
 
     public List<Messages> findLast5Rows() {
-        List<Messages> messages10OrderById = messagesRepository.findBy5OrderById();
-        Collections.reverse(messages10OrderById);
-        for (Messages m : messages10OrderById) {
+        List<Messages> messages5OrderById = messagesRepository.findBy5OrderById();
+        Collections.reverse(messages5OrderById);
+        for (Messages m : messages5OrderById) {
             m.getUser().setPassword(null);
         }
-        return messages10OrderById;
+        return messages5OrderById;
     }
 
     public void save(String message, String username) {
